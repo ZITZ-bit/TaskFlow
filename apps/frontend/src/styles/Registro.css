@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #0f1a2b, #223344, #405565);
+    color: #e5e7eb;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.register-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-form {
+    width: 420px;
+    padding: 0 1.5rem;
+}
+
+.titulo-register h1 {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(200, 200, 200, 0.4);
+    outline: none;
+    color: #e5e7eb;
+    font-size: 0.95rem;
+}
+
+.input-group input:focus {
+    border-bottom-color: #cbd5e1;
+}
+
+.input-group label {
+    position: absolute;
+    left: 0;
+    top: 14px;
+    color: #9ca3af;
+    font-size: 0.95rem;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label {
+    top: -16px;
+    font-size: 0.8rem;
+    color: #cbd5e1;
+}
+
+.register-btn {
+    width: 100%;
+    margin-top: 3rem;
+    padding: 14px;
+    background: #334155;
+    border: none;
+    border-radius: 6px;
+    color: #e5e7eb;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.register-btn:hover {
+    background: #475569;
+    transform: translateY(-1px);
+}
+
+.register-btn:active {
+    transform: translateY(0);
+}
+
+.login-link {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+.login-link a {
+    color: #93c5fd;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .register-form {
+        width: 100%;
+    }
+
+    .input-row {
+        grid-template-columns: 1fr;
+    }
+}
