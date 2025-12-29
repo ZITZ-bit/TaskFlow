@@ -19,7 +19,7 @@ export class CreateUserDto {
 
     @IsString()
     @MinLength(6)
-    contraseña: string;
+    clave: string;
 
     @IsString()
     @MinLength(6)

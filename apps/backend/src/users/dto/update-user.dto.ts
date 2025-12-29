@@ -20,5 +20,5 @@ export class UpdateUserDto {
     @IsString()
     @MinLength(6)
     @IsOptional()
-    contraseña?: string;
+    clave?: string;
 }

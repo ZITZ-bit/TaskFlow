@@ -11,35 +11,43 @@ export class UsersService {
   constructor(private readonly db: DatabaseService) {}
 
   async register(createUserDto: CreateUserDto) {
-    const { nombres, apellidos, cedula, usuario, contraseña, confirmacion } = createUserDto;
+    const { nombres, apellidos, cedula, usuario, clave, confirmacion } = createUserDto;
 
-    if (contraseña !== confirmacion) {
+    // Validar contraseñas
+    if (clave !== confirmacion) {
       throw new BadRequestException('Las contraseñas no coinciden');
     }
 
-    const [existing] = await this.db.query('SELECT * FROM usuarios WHERE usuario = ?', [usuario]) as any[];
-      if (existing.length > 0) {
-        throw new BadRequestException('Usuario ya existe');
-      }
+    // Validar si el usuario ya existe
+    const existing = await this.db.query('SELECT * FROM usuarios WHERE usuario = ?', [usuario]) as any[];
+    if (existing.length > 0) {
+      throw new BadRequestException('Usuario ya existe');
+    }
 
-    const hashedPassword = await bcrypt.hash(contraseña, 10);
+    // Hashear contraseña
+    const hashedPassword = await bcrypt.hash(clave, 10);
 
-    await this.db.query(
-      'INSERT INTO usuarios (nombre, apellido, cedula, usuario, clave) VALUES (?, ?, ?, ?, ?)',
+    // Insertar usuario
+    const result: any = await this.db.query(
+      'INSERT INTO usuarios (nombres, apellidos, cedula, usuario, clave) VALUES (?, ?, ?, ?, ?)',
       [nombres, apellidos, cedula, usuario, hashedPassword]
     );
+
+    // Insertar rol por defecto (user) en tabla usuario_rol
+    const userId = result.insertId; // ID del usuario recién creado
+    await this.db.query('INSERT INTO usuario_rol (usuario_id, rol_id) VALUES (?, ?)', [userId, 2]);
 
     return { message: 'Usuario creado correctamente' };
   }
 
   async validateUser(loginDto: LoginDto) {
-    const { usuario, contraseña } = loginDto;
+    const { usuario, clave } = loginDto;
 
-    const rows = await this.db.query('SELECT * FROM usuarios WHERE usuario = ?', [usuario]);
+    const rows = await this.db.query('SELECT * FROM usuarios WHERE usuario = ?', [usuario]) as any[];
     const user = rows[0];
     if (!user) return null;
 
-    const isMatch = await bcrypt.compare(contraseña, user.clave);
+    const isMatch = await bcrypt.compare(clave, user.clave);
     if (!isMatch) return null;
 
     return user;
