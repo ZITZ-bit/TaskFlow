@@ -56,60 +56,70 @@ export default function Registro() {
   };
 
   return (
-    <main className="register-container">
-      <form className="register-form" onSubmit={handleSubmit}>
+    <>
+      <header>
 
-        <section className="titulo-register">
-          <h1>Crear cuenta</h1>
-        </section>
+      </header>
+      
+      <main className="register-container">
+        <form className="register-form" onSubmit={handleSubmit}>
 
-        <section className="inputs">
-
-          <section className="input-row">
-            <div className="input-group">
-              <input type="text" name="nombres" required value={form.nombres} onChange={handleChange} />
-              <label>Nombre</label>
-            </div>
-
-            <div className="input-group">
-              <input type="text" name="apellidos" required value={form.apellidos} onChange={handleChange} />
-              <label>Apellido</label>
-            </div>
+          <section className="titulo-register">
+            <h1>Crear cuenta</h1>
           </section>
 
-          <section className="input-row">
+          <section className="inputs">
+
+            <section className="input-row">
+              <div className="input-group">
+                <input type="text" name="nombres" required value={form.nombres} onChange={handleChange} />
+                <label>Nombre</label>
+              </div>
+
+              <div className="input-group">
+                <input type="text" name="apellidos" required value={form.apellidos} onChange={handleChange} />
+                <label>Apellido</label>
+              </div>
+            </section>
+
+            <section className="input-row">
+              <div className="input-group">
+                <input type="text" name="cedula" required value={form.cedula} onChange={handleChange} />
+                <label>Cédula</label>
+              </div>
+
+              <div className="input-group">
+                <input type="text" name="usuario" required value={form.usuario} onChange={handleChange} />
+                <label>Usuario</label>
+              </div>
+            </section>
+
             <div className="input-group">
-              <input type="text" name="cedula" required value={form.cedula} onChange={handleChange} />
-              <label>Cédula</label>
+              <input type="password" name="clave" required value={form.clave} onChange={handleChange} />
+              <label>Contraseña</label>
             </div>
 
             <div className="input-group">
-              <input type="text" name="usuario" required value={form.usuario} onChange={handleChange} />
-              <label>Usuario</label>
+              <input type="password" name="confirmacion" required value={form.confirmacion} onChange={handleChange} />
+              <label>Confirmar contraseña</label>
             </div>
+
           </section>
 
-          <div className="input-group">
-            <input type="password" name="clave" required value={form.clave} onChange={handleChange} />
-            <label>Contraseña</label>
-          </div>
+          <button type="submit" className="register-btn">
+            Registrarse
+          </button>
 
-          <div className="input-group">
-            <input type="password" name="confirmacion" required value={form.confirmacion} onChange={handleChange} />
-            <label>Confirmar contraseña</label>
-          </div>
+          <p className="login-link">
+            ¿Ya tienes cuenta? <Link to="/">Inicia sesión</Link>
+          </p>
 
-        </section>
+        </form>
+      </main>
 
-        <button type="submit" className="register-btn">
-          Registrarse
-        </button>
+      <footer>
 
-        <p className="login-link">
-          ¿Ya tienes cuenta? <Link to="/">Inicia sesión</Link>
-        </p>
-
-      </form>
-    </main>
+      </footer>
+    </>
   );
 }
