@@ -56,7 +56,7 @@ export default function Registro() {
   };
 
   return (
-    <>
+    <div className="register-page">
       <header>
 
       </header>
@@ -120,6 +120,6 @@ export default function Registro() {
       <footer>
 
       </footer>
-    </>
+    </div>
   );
 }

@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body {
+.login-page {
     min-height: 100vh;
     background: linear-gradient(to bottom right, #0f1a2b, #223344, #405565);
     color: #e5e7eb;

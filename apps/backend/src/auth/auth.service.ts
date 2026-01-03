@@ -7,7 +7,7 @@ import { LoginDto } from '../users/dto/login.dto';
 export class AuthService {
   constructor(
     private readonly usersService: UsersService,
-    private readonly jwtService: JwtService
+    private readonly jwtService: JwtService,
   ) {}
 
   async login(loginDto: LoginDto) {
@@ -27,8 +27,8 @@ export class AuthService {
       user: {
         id: user.id,
         usuario: user.usuario,
-        nombre: user.nombre,
-        apellido: user.apellido,
+        nombre: user.nombres,
+        apellido: user.apellidos,
       },
     };
   }

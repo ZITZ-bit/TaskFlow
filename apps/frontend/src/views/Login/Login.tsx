@@ -1,9 +1,17 @@
+/* Componentes De Next */
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+/* Estilos y Modulos */
+
 import "../../styles/Login.css";
 
+/* Lógica de Componentes */
+
+
 export default function Login() {
+
   const [form, setForm] = useState({ 
 
     usuario: "", 
@@ -34,12 +42,12 @@ export default function Login() {
         return;
       }
 
-      // Guardar token en localStorage
       localStorage.setItem("token", data.access_token);
+      localStorage.setItem("user", JSON.stringify(data.user));
 
       alert("Login exitoso");
-      // Redirigir a página principal
-      navigate("/dashboard"); // ajusta según tu ruta
+      navigate("/dashboard");
+
     } catch (error) {
       console.error(error);
       alert("Error de conexión con el servidor");
@@ -47,7 +55,8 @@ export default function Login() {
   };
 
   return (
-    <>
+    <div className="login-page">
+
       <header>
         
       </header>
@@ -60,6 +69,7 @@ export default function Login() {
           </section>
 
           <section className="inputs">
+
             <div className="input-group">
               <input type="text" name="usuario" required value={form.usuario} onChange={handleChange} />
               <label>Usuario</label>
@@ -69,6 +79,7 @@ export default function Login() {
               <input type="password" name="clave" required value={form.clave} onChange={handleChange} />
               <label>Contraseña</label>
             </div>
+
           </section>
 
           <button type="submit" className="login-btn">
@@ -85,6 +96,7 @@ export default function Login() {
       <footer>
 
       </footer>
-    </>
+
+    </div>
   );
 }
