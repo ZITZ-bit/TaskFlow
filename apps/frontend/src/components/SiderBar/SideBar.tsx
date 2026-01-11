@@ -36,18 +36,18 @@ function SideBar() {
 
       <section className="sidebar-header">
 
-        <h2 className="sidebar-username">{user ? user.nombre : "Usuario"}</h2>
+        <h2 className="sidebar-username">{user? [user.nombre, user.apellido].filter(Boolean).join(" "): "Usuario"}</h2>
         <span className="sidebar-status">En línea · {sessionTime}</span>
       
       </section>
 
       <nav className="sidebar-nav">
         <ul>
-          <li><Link to="/inicio" className="sidebar-link">Inicio</Link></li>
-          <li><Link to="/tareas" className="sidebar-link">Mis Tareas</Link></li>
-          <li><Link to="/proyectos" className="sidebar-link">Proyectos</Link></li>
-          <li><Link to="/estadisticas" className="sidebar-link">Estadisticas</Link></li>
-          <li><Link to="/notificaciones" className="sidebar-link">Notificaciones</Link></li>
+          <li><Link to="/dashboard" className="sidebar-link">Inicio</Link></li>
+          <li><Link to="/Dashboard/tareas" className="sidebar-link">Mis Tareas</Link></li>
+          <li><Link to="#" className="sidebar-link">Proyectos</Link></li>
+          <li><Link to="#" className="sidebar-link">Estadísticas</Link></li>
+          <li><Link to="#" className="sidebar-link">Notificaciones</Link></li>
         </ul>
       </nav>
 

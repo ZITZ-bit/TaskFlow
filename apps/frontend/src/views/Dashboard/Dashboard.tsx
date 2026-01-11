@@ -1,5 +1,6 @@
 /* Componentes De Next */
 
+import { Outlet } from "react-router-dom";
 
 /* Componentes Reutilizables */
 
@@ -17,12 +18,14 @@ import "../../styles/Dashboard.css";
 export default function Dashboard() {
   return(
     <>
-      <header>
+      <header className="HeaderDashboard">
         <SideBar />
       </header>
 
-      <main>
-        
+      <main className="MainDashboard">
+        <section>
+          <Outlet/>
+        </section>
       </main>
 
       <footer>

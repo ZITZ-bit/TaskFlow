@@ -3,11 +3,17 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+/* Componentes Reutilizables */
+
+
 /* Estilos y Modulos */
 
 import "../../styles/Login.css";
 
 /* Lógica de Componentes */
+
+
+/* Animaciones */
 
 
 export default function Login() {
