@@ -1,5 +1,136 @@
+/* ================================
+  RESET BÁSICO
+================================ */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================================
+  CONTENEDOR PRINCIPAL (ROOT DARK)
+================================ */
+.ContainerInicio {
+  position: relative;
+  min-height: 100vh;
+  color: #e5e7eb;
+  overflow-x: hidden;
+}
+
+/* 🔥 Fondo oscuro REAL para toda la página */
+.ContainerInicio::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: #18191d;
+  z-index: -1;
+}
+
+/* ================================
+  CONTENIDO DEL DASHBOARD
+================================ */
+.NuevaTarea {
+  position: absolute;
+  top: 24px;
+  left: 270px;
+  right: 0;
+
+  padding: 24px 32px 64px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ================================
+  SECCIONES (TAREAS, PROYECTOS…)
+================================ */
+.dashboard-section {
+  background: #1e1f24;
+  border-radius: 16px;
+  padding: 24px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* Secciones deshabilitadas */
+.dashboard-section.muted {
+  opacity: 0.6;
+}
+
+/* ================================
+  HEADER DE CADA SECCIÓN
+================================ */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #2c2f36;
+}
+
+.section-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #f3f4f6;
+}
+
+.section-header span {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+/* ================================
+  GRID DE TARJETAS
+================================ */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+/* ================================
+  ESTADO VACÍO
+================================ */
+.empty-state {
+  padding: 24px 0;
+  color: #9ca3af;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* ================================
+  PLACEHOLDERS
+================================ */
+.placeholder {
+  padding: 20px 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-style: italic;
+  text-align: center;
+}
+
+/* ================================
+  RESPONSIVE
+================================ */
+@media (max-width: 1024px) {
+  .NuevaTarea {
+    left: 0;
+    padding: 24px 20px 64px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
 }

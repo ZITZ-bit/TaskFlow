@@ -8,4 +8,8 @@ export class CreateTaskDto {
     @IsString()
     @IsOptional()
     descripcion?: string;
+
+    @IsString()
+    @IsOptional()
+    imagen?: string;
 }

@@ -1,37 +1,25 @@
-/* Componentes De Next */
-
-
-/* Componentes Reutilizables */
-
-
-/* Estilos y Modulos */
-
 import "./TaskCard.css";
+import type { Task } from "../CreateTaskModal/CreateTaskModal";
 
-/* Lógica de Componentes */
+interface TaskCardProps {
+  task: Task;
+}
 
-
-/* Animaciones */
-
-
-function SideBar() {
+function TaskCard({ task }: TaskCardProps) {
   return (
     <div className="card">
 
       <div className="card-image">
-        <img src="https://picsum.photos/400/200" alt="Imagen" />
+        <img
+          src={task.imagen || "https://picsum.photos/400/200"}
+          alt="Imagen"
+        />
       </div>
 
       <div className="card-content">
-
         <span className="card-tag">Importante</span>
-
-        <h3 className="card-title">Título del Card</h3>
-
-        <p className="card-text">
-          Esta es una breve descripción del contenido del card. Proporciona información adicional sobre el elemento.
-        </p>
-
+        <h3 className="card-title">{task.titulo}</h3>
+        <p className="card-text">{task.descripcion}</p>
       </div>
 
       <div className="card-actions">
@@ -40,11 +28,13 @@ function SideBar() {
       </div>
 
       <div className="card-footer">
-        <small>Actualizado: 12/01/2026</small>
+        <small>
+          Creado: {task.createdAt ?? "Hoy"}
+        </small>
       </div>
 
     </div>
   );
 }
 
-export default SideBar;
+export default TaskCard;

@@ -2,23 +2,18 @@
 
 import { LuPlus, LuFolderPlus, LuTag, LuCalendarDays } from "react-icons/lu";
 
-/* Componentes Reutilizables */
-
-/* Estilos y Modulos */
+/* Estilos */
 
 import "./ActionBar.css";
 
-/* Iconos */
+interface ActionBarProps {
+  onCreateTask: () => void;
+}
 
-
-/* Lógica de Componentes */
-
-/* Animaciones */
-
-function ActionBar() {
+function ActionBar({ onCreateTask }: ActionBarProps) {
   return (
     <div className="action-bar">
-      <button className="action-btn" title="Nueva tarea">
+      <button className="action-btn" title="Nueva tarea" onClick={onCreateTask}>
         <LuPlus />
       </button>
 
