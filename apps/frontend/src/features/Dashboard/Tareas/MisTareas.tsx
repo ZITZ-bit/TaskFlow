@@ -3,7 +3,6 @@
 
 /* Componentes Reutilizables */
 
-import TaskCard from "../../../components/TaskCard/TaskCard"
 
 /* Estilos y Modulos */
 
@@ -18,7 +17,7 @@ import "./MisTareas.css";
 export default function MisTareas() {
   return (
     <div className="ContainerTareas">
-      <TaskCard/>
+
     </div>
   );
 }

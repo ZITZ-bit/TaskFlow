@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+.action-bar {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.4rem;
+  border-radius: 16px;
+  background-color: #2c2f36; /* mismo que sidebar */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+}
+
+.action-btn {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 12px;
+  background-color: #23252b;
+  color: #e5e7eb;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.action-btn:hover {
+  background-color: #7e5bef;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.action-btn:active {
+  background-color: #7e5bef;
+  transform: scale(0.95);
+}
+
+.action-btn svg {
+  width: 20px;
+  height: 20px;
+}

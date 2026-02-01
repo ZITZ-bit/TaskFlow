@@ -43,7 +43,7 @@ function SideBar() {
 
       <nav className="sidebar-nav">
         <ul>
-          <li><Link to="/dashboard" className="sidebar-link">Inicio</Link></li>
+          <li><Link to="/dashboard/Inicio" className="sidebar-link">Inicio</Link></li>
           <li><Link to="/Dashboard/tareas" className="sidebar-link">Mis Tareas</Link></li>
           <li><Link to="#" className="sidebar-link">Proyectos</Link></li>
           <li><Link to="#" className="sidebar-link">Estadísticas</Link></li>

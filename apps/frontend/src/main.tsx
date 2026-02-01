@@ -11,6 +11,7 @@ import Dashboard from './views/Dashboard/Dashboard'
 // Features - Routes
 
 import MisTareas from './features/Dashboard/Tareas/MisTareas'
+import Inicio from './features/Dashboard/Inicio/Inicio'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')!).render(
 
         <Route path="/dashboard" element={<Dashboard />}>
 
+          <Route path="Inicio" element={<Inicio/>} />
           <Route path="tareas" element={<MisTareas />} />
 
         </Route>
