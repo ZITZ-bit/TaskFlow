@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model roles {
+  id          Int           @id @default(autoincrement())
+  nombre_rol  String        @unique(map: "uq_roles_nombre") @db.VarChar(50)
+  descripcion String?       @db.VarChar(150)
+  created_at  DateTime      @default(now()) @db.DateTime(0)
+  usuario_rol usuario_rol[]
+}
+
+model tasks {
+  id          Int           @id @default(autoincrement())
+  titulo      String        @db.VarChar(100)
+  descripcion String?       @db.Text
+  estado      tasks_estado? @default(pendiente)
+  usuario_id  Int
+  created_at  DateTime?     @default(now()) @db.DateTime(0)
+  updated_at  DateTime?     @db.DateTime(0)
+  imagen      String?       @db.VarChar(255)
+  usuarios    usuarios      @relation(fields: [usuario_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "tasks_ibfk_1")
+
+  @@index([usuario_id], map: "usuario_id")
+}
+
+model usuario_rol {
+  usuario_id Int
+  rol_id     Int
+  roles      roles    @relation(fields: [rol_id], references: [id], onDelete: Cascade, map: "fk_usuario_rol_rol")
+  usuarios   usuarios @relation(fields: [usuario_id], references: [id], onDelete: Cascade, map: "fk_usuario_rol_usuario")
+
+  @@id([usuario_id, rol_id])
+  @@index([rol_id], map: "fk_usuario_rol_rol")
+}
+
+model usuarios {
+  id          Int           @id @default(autoincrement())
+  nombres     String        @db.VarChar(100)
+  apellidos   String        @db.VarChar(100)
+  cedula      String        @unique(map: "uq_usuarios_cedula") @db.VarChar(20)
+  usuario     String        @unique(map: "uq_usuarios_usuario") @db.VarChar(50)
+  clave       String        @db.VarChar(255)
+  created_at  DateTime      @default(now()) @db.DateTime(0)
+  updated_at  DateTime?     @db.DateTime(0)
+  tasks       tasks[]
+  usuario_rol usuario_rol[]
+}
+
+enum tasks_estado {
+  pendiente
+  en_progreso
+  completada
+}
