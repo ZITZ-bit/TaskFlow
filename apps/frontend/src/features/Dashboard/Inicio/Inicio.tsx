@@ -12,7 +12,6 @@ export default function Inicio() {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [tasks, setTasks] = useState<Task[]>([]);
 
-  // 🔹 Cargar tareas al entrar
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) return;
@@ -33,10 +32,8 @@ export default function Inicio() {
 
   return (
     <div className="ContainerInicio">
-      {/* Barra flotante */}
       <ActionBar onCreateTask={() => setShowCreateModal(true)} />
 
-      {/* Contenido principal */}
       <main className="NuevaTarea">
         {/* 🧩 TAREAS */}
         <section className="dashboard-section">
@@ -73,7 +70,6 @@ export default function Inicio() {
         </section>
       </main>
 
-      {/* Modal */}
       {showCreateModal && (
         <CreateTaskModal
           onClose={() => setShowCreateModal(false)}
